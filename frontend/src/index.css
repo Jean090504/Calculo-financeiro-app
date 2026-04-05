@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+/* Evita o scroll duplo (um no body e um no main) */
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Permite o scroll apenas no main */
+main {
+  height: 100%;
+  overflow-y: auto;
+}

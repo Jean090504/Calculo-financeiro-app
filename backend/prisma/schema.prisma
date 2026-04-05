@@ -1,0 +1,32 @@
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // MUDAMOS DE SQLITE PARA POSTGRESQL AQUI!
+  url      = env("DATABASE_URL")
+}
+
+// NOVA TABELA: Para você e a Larissa logarem
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+// SUA TABELA ATUALIZADA
+model Transaction {
+  id          String   @id @default(uuid())
+  description String
+  amount      Float
+  type        String
+  category    String
+  date        DateTime
+  isAtypical  Boolean  @default(false)
+  isRecurring Boolean  @default(false) // O CAMPO PARA ASSINATURAS MENSAIS
+  createdAt   DateTime @default(now())
+}
